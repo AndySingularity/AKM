@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
 
 	def inner # => Приватный метод для обработки входящих данных из форм на сайте
-		params.require(:user).permit(:username, :about)	# => параметры, которые мы позволяем изменять
+		params.require(:user).permit(:about)	# => параметры, которые мы позволяем изменять
 	end
     
 end

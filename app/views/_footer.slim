@@ -65,10 +65,6 @@ div.col-md-3.sidebar#secondary style="display: none;"
 						= current_user.email
 
 					= simple_form_for :user, url: user_path(current_user.id), :html => { :multipart => true, method: 'put' } do |f|
-					    div.form-froup
-							label.control-label for="username"
-								| Username
-							= f.input :username, placeholder: current_user.username, id: 'username', label: false
 						div.form-froup
 							label.control-label for="about"
 								| Описание
