@@ -4,14 +4,5 @@ div.row#back
 			h1.blog-title
 			    | Йоу-йоу-йоу! Как вы сюда попали?
 
-/ - @users.each do |u|
-	div.row#back
-		div.col-md-8
-			div.blog-header
-				h1.blog-title
-					| Username: 
-					= link_to u.username, u
-				br
-				| Email: 
-				= u.email + " "
-				= link_to "Delete", user_path(u), method: :delete
+
+= link_to "Forum", forem_path, class: 'btn btn-success btn-sm'

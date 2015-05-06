@@ -8,7 +8,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'spring', group: :development
 gem 'unicorn'
 gem 'devise'
 gem 'kaminari'
@@ -16,3 +15,4 @@ gem 'slim'
 gem 'bootstrap-kaminari-views'
 gem 'simple_form'
 gem 'nested_form'
+gem 'forem', :github => "radar/forem", :branch => "rails4"
