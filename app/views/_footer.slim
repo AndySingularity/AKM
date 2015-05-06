@@ -1,0 +1,86 @@
+div.col-md-3.sidebar#secondary style="display: none;"
+	aside
+		- unless user_signed_in?
+			div.about.center
+				h4
+					| AKM
+				p
+					| Форум AKM
+
+			ul.nav.nav-tabs.center
+				li style="width: 50%;"
+					a href="#home" data-toggle="tab"
+						| Авторизация
+				li style="width: 50%;"
+					a href="#profile" data-toggle="tab"
+						| Регистрация
+			div.tab-content#myTabContent
+				
+				div.tab-pane.fade.active.in#home
+					div class="row" style="margin-top:20px"
+						div.col-md-12
+							= simple_form_for :user, :as => :user, :url => user_session_path, html: {id: 'sign_up_user', :'data-type' => 'json'} do |f|
+								fieldset
+									hr.colorgraph
+									div.form-group
+										= f.text_field :username, required: true, autofocus: true, placeholder: 'Username', class: 'form-control input-lg', id: 'username'
+									div.form-group
+										= f.password_field :password, required: true, placeholder: 'Пароль', id: 'password', class: 'form-control input-lg'
+									span.button-checkbox
+										/ <a href="" class="btn btn-link pull-right">Forgot Password?</a>
+									hr.colorgraph
+									div.row
+										div.col-md-12
+										= f.button :submit, "Войти", class: 'btn btn-lg btn-success btn-block'				
+				
+				div.tab-pane.fade#profile
+					div class="row" style="margin-top:20px"
+						div.col-md-12
+							= simple_form_for(User.new, url: registration_path(:user), html: {id: 'sign_up_user', :'data-type' => 'json'}) do |f|
+								fieldset
+									hr.colorgraph
+									div.form-group
+										= f.text_field :email, required: true, autofocus: true, placeholder: 'Email', class: 'form-control input-lg', id: 'email'
+									div.form-group
+										= f.text_field :username, required: true, placeholder: 'Username', class: 'form-control input-lg', id: 'username'
+									div.form-group
+										= f.password_field :password, required: true, placeholder: 'Пароль', id: 'password', class: 'form-control input-lg'
+									div.form-group
+										= f.password_field :password_confirmation, required: true, placeholder: 'Подтверждение пароля', id: 'password_confirmation', class: 'form-control input-lg'								
+									span.button-checkbox
+										/ <a href="" class="btn btn-link pull-right">Forgot Password?</a>
+									hr.colorgraph
+									div.row
+										div.col-md-12
+										= f.button :submit, "Зарегистрироваться", class: 'btn btn-lg btn-primary btn-block'
+
+		- else
+			div.row.center
+				div.col-md-12
+
+					p
+						= current_user.username
+					p
+						span.glyphicon.glyphicon-envelope
+						= current_user.email
+
+					= simple_form_for :user, url: user_path(current_user.id), :html => { :multipart => true, method: 'put' } do |f|
+					    div.form-froup
+							label.control-label for="username"
+								| Username
+							= f.input :username, placeholder: current_user.username, id: 'username', label: false
+						div.form-froup
+							label.control-label for="about"
+								| Описание
+							= f.text_area :about, as: :text , class: 'form-control', value: current_user.about, rows: '3', id: 'about'
+						br
+						div.form-group
+							= f.submit "Обновить", class: 'btn btn-info'
+
+			div.row.center
+				= link_to " Выйти", destroy_user_session_path, type: 'button', :method => :delete, class: 'glyphicon glyphicon-off btn btn-warning'
+
+			div.row										
+				footer.footer
+					p
+						| © AKM 2015

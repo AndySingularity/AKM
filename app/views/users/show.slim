@@ -1,0 +1,12 @@
+= provide(:title, "#{@user.username}")
+
+/ Аватарка (см. users_helper)
+div.row#back
+	div.col-md-2
+		| Тут аватар, ага, щас
+	div.col-md-10
+		div.blog-header
+			h1.blog-title
+				= @user.username
+			p.lead.blog-description
+				= @user.about

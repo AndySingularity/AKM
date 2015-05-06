@@ -1,0 +1,25 @@
+header.header
+	hgroup.pull-left
+		h1.site-title
+			= link_to 'AKM', root_path
+	- if user_signed_in?
+		div.btn-group.pull-right
+			div.btn.btn-sm.btn-success#togglesidebar
+				| Настройки
+			= link_to 'Пользователи', users_path, class: 'btn btn-success btn-sm'
+	- else
+		div.btn.btn-primary.pull-right#togglesidebar
+			| Авторизация
+br
+- unless user_signed_in?
+	div.alert.alert-dismissable.alert-success
+		button.close type="button" data-dismiss="alert"
+			| ×
+		strong
+			| Тестовые данные: <b>login</b> - <em>demouser</em>, <b>password</b> - <em>demopass</em>
+			
+- flash.each do |name, msg|
+  - alerts = {'notice' => 'success', 'alert' => 'danger'}
+  div.alert class="alert-#{alerts[name] || 'warning'}"
+    button type="button" class="close" data-dismiss="alert" X
+    strong "#{msg}"

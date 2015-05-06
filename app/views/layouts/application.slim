@@ -1,0 +1,26 @@
+/ encoding: utf-8
+doctype html
+html
+	head
+		meta charset="utf-8"
+			meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
+			meta name="viewport" content="width=device-width, initial-scale=1.0"
+			title = full_title(yield(:title))
+			= stylesheet_link_tag '//netdna.bootstrapcdn.com/bootswatch/3.1.1/yeti/bootstrap.min.css'
+			= csrf_meta_tags
+			= stylesheet_link_tag "application", :media => "all"
+			= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+			script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+			= javascript_include_tag "application"
+			script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"
+			= analytics_init if Rails.env.production?
+			link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"
+
+
+
+body
+	div.container.clearfix.content
+		div.col-sm-12#primary
+			= render './header'
+			= yield
+		= render './footer'

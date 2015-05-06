@@ -1,0 +1,18 @@
+div.container
+	div.row
+		div.col-md-8.col-md-offset-2.center
+
+				h3 Регистрация
+			
+				= simple_form_for(User.new, url: registration_path(:user), html: {id: 'sign_up_user', :'data-type' => 'json'}) do |f|
+					= f.error_notification
+					div.form-group
+						= f.text_field :email, required: true, autofocus: true, placeholder: 'Email'
+					div.form-group
+						= f.text_field :username, required: true, placeholder: 'Username'						
+					div.form-group
+						= f.password_field :password, required: true, placeholder: 'Пароль'
+					div.form-group
+						= f.password_field :password_confirmation, placeholder: 'Подтверждение пароля', required: true
+					div.form-group
+						= f.button :submit, "Зарегистрироваться", class: 'btn btn-primary'
