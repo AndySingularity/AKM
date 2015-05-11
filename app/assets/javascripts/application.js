@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require markitup
+//= require markitup/sets/xbbcode/set
 //= require turbolinks
-//= require forem
 //= require_tree .
 
 $(function(){
@@ -43,6 +44,7 @@ $(document).on('page:load', function(){
 	var toggleSidebar = $("#togglesidebar");
 	var primary = $("#primary");
 	var secondary = $("#secondary");
+	
 
 	toggleSidebar.on("click", function(){
 

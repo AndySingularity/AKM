@@ -1,0 +1,28 @@
+div.row#back
+	div.blog-header
+		h1.blog-title
+			= link_to @forum.title, @forum
+div.row#back
+	div.blog-header
+		h1.blog-title
+			= @conversation.title
+
+- @comments.each do |cm|
+	ol
+		div
+			div.col-md-12
+				div.comment-text
+					p
+						= markdown( cm.text )
+				div.mic-info.pull-right
+					| By: 
+					= link_to cm.user.username, user_path(cm.user_id)
+					|  
+					- if cm.user_id == current_user.id
+						= link_to "Удалить", forum_conversation_comment_path(forum_id: @forum.id, conversation_id: @conversation.id, id: cm.id), class: "btn btn-primary btn-xs", method: :delete, data: { confirm: "Вы уверены?" }
+	br
+= paginate @comments
+
+br
+/ = link_to "Новый комментарий", new_forum_conversation_comment_path(conversation_id: @conversation.id, forum_id: @forum.id), class: "btn btn-success"
+= render file: "comments/new"

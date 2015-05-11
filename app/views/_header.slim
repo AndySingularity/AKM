@@ -4,6 +4,7 @@ header.header
 			= link_to 'AKM', root_path
 	- if user_signed_in?
 		div.btn-group.pull-right
+			= link_to "Форум", forums_path, class: "btn btn-success btn-sm"
 			div.btn.btn-sm.btn-success#togglesidebar
 				| Настройки
 			= link_to 'Пользователи', users_path, class: 'btn btn-success btn-sm'

@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-    
-    before_filter :authenticate_user! # => Требуем авторизации для доступа к методам контроллёра
 
 	def edit # => Вывод формы для обновления
 		@user = current_user # => текущий юзер

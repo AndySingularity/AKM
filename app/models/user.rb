@@ -11,13 +11,7 @@ class User < ActiveRecord::Base
 		message: "Нудопустимые символы"}
 	validates :email, presence: true, length: {maximum: 45}, format: {with:VALID_EMAIL_REGEX},
 		uniqueness: { case_sensitive: false }
-		
-	def forem_name
-    username
-  end
-  
-  def forem_email
-    email
-  end
+    
+    has_many :comments
   
 end

@@ -15,4 +15,11 @@ gem 'slim'
 gem 'bootstrap-kaminari-views'
 gem 'simple_form'
 gem 'nested_form'
-gem 'forem', :github => "radar/forem", :branch => "rails4"
+gem 'rails_12factor', group: :production
+gem 'bootstrap-sass'
+gem 'pry'
+gem 'friendly_id'
+gem 'cancan', git: "https://github.com/nukturnal/cancan.git"
+gem 'bootstrap-kaminari-views'
+gem 'redcarpet'
+gem 'markitup-rails'

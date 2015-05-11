@@ -1,0 +1,12 @@
+- @forums.each do |f|
+	div.row#back
+		div.blog-header
+			h1.blog-title
+				= link_to f.title, f
+			p.lead.blog-description
+				= f.desc
+			= link_to "Изменить", edit_forum_path(f.id) , class: "btn btn-info btn-xs"
+			= link_to "Удалить", forum_path(f.id), class: "btn btn-primary btn-xs", method: :delete, data: { confirm: "Вы уверены?" }
+
+br
+= link_to "Новый форум", new_forum_path, class: "btn btn-success"

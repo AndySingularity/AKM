@@ -1,0 +1,11 @@
+div.comments
+	div#disqus_thread
+		h2 
+			| Новый Раздел
+		= simple_form_for :conversation, url: forum_conversations_path(params[:forum_id]), html: {method: :post} do |f|
+			div.form-group
+				label.sr-only
+					| article_text
+				= f.input_field :title, class: 'form-control', placeholder: 'Название Раздела	'
+			= f.hidden_field :forum_id, value: params[:forum_id]
+			= f.submit "Сохранить", class: 'btn btn-success btn-sm btn-block'

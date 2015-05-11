@@ -1,0 +1,17 @@
+div.row#back
+	div.blog-header
+		h1.blog-title
+			= @forum.title
+		p.lead.blog-description
+			= @forum.desc
+
+- @conversations.each do |c|
+	div.row#back
+		div.blog-header
+			h1.blog-title
+				= link_to c.title, forum_conversation_path(forum_id: @forum.id, id: c.id)
+			= link_to "Изменить", edit_forum_conversation_path(forum_id: @forum.id, id: c.id) , class: "btn btn-info btn-xs"
+			= link_to "Удалить", forum_conversation_path(forum_id: @forum.id, id: c.id), class: "btn btn-primary btn-xs", method: :delete, data: { confirm: "Вы уверены?" }
+
+br
+= link_to "Новый раздел", new_forum_conversation_path(@forum.id), class: "btn btn-success"

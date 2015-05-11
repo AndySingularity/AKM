@@ -1,0 +1,15 @@
+div.col-md-10.col-md-offset-1#back.center
+  h2 Новый форум
+  = simple_form_for :forum, url: {controller: "forums", action: "create"} do |f|   
+    div.form-group
+      label.sr-only
+        | article_text
+      = f.input_field :title, class: 'form-control', placeholder: 'Название форума'
+
+    div.form-group
+      label.sr-only
+        | article_text
+      = f.text_area :desc, as: :text , class: 'form-control', placeholder: 'Описание', rows: '18'
+      
+    div.form-group
+      = f.submit "Сохранить"

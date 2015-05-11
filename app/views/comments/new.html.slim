@@ -1,0 +1,12 @@
+div.comments
+	div#disqus_thread
+		h2 
+			| Новый Комментарий
+		= simple_form_for :comment, url: forum_conversation_comments_path(conversation_id: params[:conversation_id] || @conversation.id), html: {method: :post} do |f|
+			div.form-group
+				label.sr-only
+					| article_text
+				= f.text_area :text, as: :text , class: 'form-control', placeholder: 'Текст', rows: '18', id: 'post_content'
+			= f.hidden_field :conversation_id, value: params[:conversation_id] || @conversation.id
+			= f.hidden_field :user_id, value: current_user.id
+			= f.submit "Сохранить", class: 'btn btn-success btn-sm btn-block'
